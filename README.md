@@ -229,7 +229,8 @@ You never need to repeat these steps.
    - **Windows:** double-click `companion\run.bat`
    - **Linux / macOS:** run `./run.sh` from the `companion` folder
 2. Open any YouTube video.
-3. Click the **Download** button below the video, or click the extension icon.
+3. Click the **Download** button below the video, or click the extension icon.<img width="757" height="80" alt="image" src="https://github.com/user-attachments/assets/80065919-2b4e-4919-93c0-c3d12555a71f" />
+
 4. Choose a quality (e.g. 1080p MP4), or tick **Audio-only** and pick MP3 / M4A.
 5. Click **Download**.
 
