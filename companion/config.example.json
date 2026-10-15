@@ -1,0 +1,7 @@
+{
+  "host": "127.0.0.1",
+  "port": 8765,
+  "download_dir": "~/Downloads/YTDownloader",
+  "max_concurrent": 2,
+  "token": "PASTE_GENERATED_TOKEN_HERE (auto-created in config.json on first run)"
+}

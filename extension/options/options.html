@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>YT Downloader — Options</title>
+<link rel="stylesheet" href="options.css" />
+</head>
+<body>
+<div class="wrap">
+  <h1>YT Local Downloader — Options</h1>
+  <p class="muted">The extension talks to a <b>local companion server</b> on your computer (yt-dlp + ffmpeg) over localhost. Paste the token printed by the companion once here.</p>
+
+  <div class="card">
+    <h2>Connection</h2>
+    <label>Companion URL
+      <input id="serverUrl" type="text" placeholder="http://127.0.0.1:8765" />
+    </label>
+    <label>API token (shared secret)
+      <input id="token" type="password" placeholder="paste token from companion console" autocomplete="off" />
+    </label>
+    <div class="row">
+      <button id="testBtn" class="btn secondary">Test connection</button>
+      <span id="connDot" class="dot unknown"></span>
+      <span id="connText" class="muted">Not tested</span>
+    </div>
+    <div id="connDetail" class="detail"></div>
+  </div>
+
+  <div class="card">
+    <h2>Downloads</h2>
+    <label>Download folder (on the companion; server-side setting)
+      <input id="downloadFolder" type="text" placeholder="e.g. C:\Users\you\Downloads\YTDownloader" />
+    </label>
+    <div class="grid2">
+      <label>Default quality
+        <select id="defaultQuality">
+          <option value="best">Best available</option>
+          <option value="2160">2160p</option>
+          <option value="1440">1440p</option>
+          <option value="1080" selected>1080p</option>
+          <option value="720">720p</option>
+          <option value="480">480p</option>
+        </select>
+      </label>
+      <label>Default container
+        <select id="defaultContainer">
+          <option value="mp4">MP4</option>
+          <option value="mkv">MKV</option>
+        </select>
+      </label>
+    </div>
+    <div class="grid2">
+      <label>Default audio format
+        <select id="defaultAudioFormat">
+          <option value="mp3">MP3</option>
+          <option value="m4a">M4A</option>
+        </select>
+      </label>
+      <label>Default audio bitrate
+        <select id="defaultAudioBitrate">
+          <option value="192">192 kbps</option>
+          <option value="320">320 kbps</option>
+        </select>
+      </label>
+    </div>
+    <label>Max concurrent downloads (1–5)
+      <input id="maxConcurrent" type="number" min="1" max="5" value="2" />
+    </label>
+  </div>
+
+  <div class="card">
+    <h2>Maintenance</h2>
+    <div class="row">
+      <button id="updateBtn" class="btn secondary">Update yt-dlp</button>
+      <span id="updateText" class="muted"></span>
+    </div>
+    <p class="muted small">CLI equivalent: <code>python -m pip install -U yt-dlp</code> inside the companion venv.</p>
+  </div>
+
+  <div class="row sticky">
+    <button id="saveBtn" class="btn primary">Save</button>
+    <span id="saveText" class="muted"></span>
+  </div>
+</div>
+<script src="../common/api.js"></script>
+<script src="options.js"></script>
+</body>
+</html>

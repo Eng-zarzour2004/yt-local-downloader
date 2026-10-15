@@ -1,0 +1,43 @@
+#ytdl-local-download-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-right: 8px;
+  padding: 8px 14px;
+  border: none;
+  border-radius: 18px;
+  background: var(--yt-spec-badge-chip-background, #f2f2f2);
+  color: var(--yt-spec-text-primary, #0f0f0f);
+  font: 500 13px/1 Roboto, Arial, sans-serif;
+  cursor: pointer;
+  white-space: nowrap;
+}
+#ytdl-local-download-btn:hover {
+  background: var(--yt-spec-button-chip-background-hover, #e5e5e5);
+}
+#ytdl-local-download-btn svg { flex: none; }
+
+#ytdl-local-toast {
+  position: fixed;
+  bottom: 28px;
+  left: 50%;
+  transform: translateX(-50%) translateY(20px);
+  background: #0f0f0f;
+  color: #fff;
+  font: 400 13px/1.4 Roboto, Arial, sans-serif;
+  padding: 10px 16px;
+  border-radius: 8px;
+  opacity: 0;
+  transition: opacity .25s, transform .25s;
+  z-index: 999999;
+  pointer-events: none;
+  max-width: 80vw;
+}
+#ytdl-local-toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
+@media (prefers-color-scheme: dark) {
+  #ytdl-local-download-btn {
+    background: rgba(255,255,255,.12);
+    color: #fff;
+  }
+  #ytdl-local-download-btn:hover { background: rgba(255,255,255,.2); }
+}

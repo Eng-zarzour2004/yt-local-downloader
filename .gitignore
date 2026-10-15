@@ -1,0 +1,6 @@
+companion/.venv/
+companion/__pycache__/
+companion/app/__pycache__/
+companion/config.json
+companion/history.db*
+*.pyc

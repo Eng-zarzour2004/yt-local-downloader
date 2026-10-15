@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>YT Local Downloader</title>
+<link rel="stylesheet" href="popup.css" />
+</head>
+<body>
+<header class="topbar">
+  <div class="brand"><span class="dot"></span> YT Downloader</div>
+  <div class="top-actions">
+    <span id="serverDot" class="server-dot unknown" title="Companion status"></span>
+    <button id="openOptions" class="icon-btn" title="Options">⚙</button>
+  </div>
+</header>
+
+<nav class="tabs" role="tablist">
+  <button class="tab active" data-tab="download" role="tab">Download</button>
+  <button class="tab" data-tab="queue" role="tab">Queue <span id="queueCount" class="pill hidden"></span></button>
+  <button class="tab" data-tab="history" role="tab">History</button>
+</nav>
+
+<main>
+  <!-- DOWNLOAD TAB -->
+  <section id="tab-download" class="panel active">
+    <label class="field-label" for="urlInput">YouTube URL</label>
+    <div class="url-row">
+      <input id="urlInput" type="url" placeholder="https://www.youtube.com/watch?v=…" spellcheck="false" />
+      <button id="fetchBtn" class="btn secondary" title="Fetch info">Get</button>
+    </div>
+    <div id="autoHint" class="hint"></div>
+
+    <div id="errorBox" class="error hidden"></div>
+
+    <div id="preview" class="preview hidden">
+      <img id="pvThumb" alt="" />
+      <div class="pv-meta">
+        <div id="pvTitle" class="pv-title"></div>
+        <div id="pvSub" class="pv-sub"></div>
+      </div>
+    </div>
+
+    <div id="playlistBox" class="playlist-box hidden">
+      <div id="playlistLabel" class="hint"></div>
+      <label class="radio"><input type="radio" name="plScope" value="single" checked /> Single video</label>
+      <label class="radio"><input type="radio" name="plScope" value="full" /> Whole playlist</label>
+    </div>
+
+    <div id="formatSection" class="hidden">
+      <div class="grid2">
+        <div>
+          <label class="field-label" for="qualitySel">Video quality</label>
+          <select id="qualitySel"></select>
+        </div>
+        <div>
+          <label class="field-label" for="containerSel">Container</label>
+          <select id="containerSel">
+            <option value="mp4">MP4 (default)</option>
+            <option value="mkv">MKV</option>
+          </select>
+        </div>
+      </div>
+      <label class="check"><input type="checkbox" id="audioOnly" /> Audio-only</label>
+      <div id="audioOpts" class="grid2 hidden">
+        <div>
+          <label class="field-label" for="audioFmt">Audio format</label>
+          <select id="audioFmt">
+            <option value="mp3">MP3</option>
+            <option value="m4a">M4A</option>
+          </select>
+        </div>
+        <div>
+          <label class="field-label" for="audioBr">Bitrate</label>
+          <select id="audioBr">
+            <option value="192">192 kbps</option>
+            <option value="320">320 kbps</option>
+          </select>
+        </div>
+      </div>
+      <button id="downloadBtn" class="btn primary">⬇ Download</button>
+    </div>
+
+    <div id="progressBox" class="progress-box hidden">
+      <div class="prog-top"><span id="progLabel">Starting…</span><span id="progPct">0%</span></div>
+      <div class="bar"><div id="progFill"></div></div>
+      <div class="prog-sub"><span id="progSpeed"></span><span id="progEta"></span></div>
+      <div id="queueItems" class="queue-items"></div>
+      <div class="row">
+        <button id="cancelBtn" class="btn danger">Cancel</button>
+        <button id="newBtn" class="btn secondary">New download</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- QUEUE TAB -->
+  <section id="tab-queue" class="panel">
+    <div id="queueList" class="list"><div class="hint">No active downloads.</div></div>
+  </section>
+
+  <!-- HISTORY TAB -->
+  <section id="tab-history" class="panel">
+    <div class="row space">
+      <span class="hint">Stored on the companion (SQLite).</span>
+      <button id="refreshHist" class="btn secondary small">Refresh</button>
+    </div>
+    <div id="historyList" class="list"><div class="hint">Loading…</div></div>
+  </section>
+</main>
+
+<footer class="foot">
+  <span id="statusLine" class="hint">Companion: checking…</span>
+</footer>
+
+<script src="../common/api.js"></script>
+<script src="popup.js"></script>
+</body>
+</html>
